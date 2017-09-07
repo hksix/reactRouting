@@ -3,47 +3,126 @@
 }
 
 .App-logo {
+  
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 40px;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 75px;
   padding: 20px;
   color: white;
 }
 
 .App-intro {
-  font-size: large;
+  font-size: small;
 }
 
+.header{
+  text-align: start;
+}
+.menuButton{
+  /* position: absolute; */
+  /* clear:left; */
+  float: left;
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  /* z-index: 3; */
+}
+
+.menuButton:hover, .menuButton:focus {
+  background-color: #3e8e41;
+}
 .menu-enter {
-  max-height: 0px;
-  -webkit-transition: max-height 1s ease;
-  overflow: hidden;
+  position: relative;
+  /* display: inline-block; */
+  /* clear:left; */
+  opacity: 0.1;
+  /* max-height: 280px; */
+  /* animation-name: fade-out;
+  animation-duration: 500ms; */
+  
 }
 
 .menu-enter.menu-enter-active {
-  height: auto;
-  max-height: 100px;
+  clear:left;
+  opacity: 1;
+  overflow: scroll;
+  animation-name: fade-in;
+  animation-duration: 500ms;
 }
 
 .menu-leave {
-  max-height: 100px;
-  -webkit-transition: max-height 1s ease;
+  clear:left;
+  animation-name: fade-out;
+  animation-duration: 500ms;
+  
 }
 
 .menu-leave.menu-leave-active {
-  overflow: hidden;
-  max-height: 0px;
+  clear:left;
+  animation-name: fade-out;
+  animation-duration: 1s;
 }
 
 ul {
-  border: #ababab solid 1px;
-  width: 70%;
+  /* position: absolute; */
+  padding-left: 0;
+  margin: 0000;
+  clear: left;
+  /* float:left; */
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  /* border: #ababab solid 1px; */
+  width: 83px;
+  
 }
+
+li{
+  /* position: absolute; */
+  background-color: #f9f9f9;
+  min-width: 82px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  list-style: none;
+  color: black;
+  text-align: start;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+li:hover {background-color: #f1f1f1
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0.0;
+    height: 0px;
+  }
+  to {
+    opacity: 1.0;
+    height: 280px;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1.0;
+    height: 380px;
+  }
+  to {
+    opacity: 0.0;
+    height: 0px;
+  }
 }

@@ -7,6 +7,7 @@ import Thing from './Thing.js'
 import Bob from './Bob.js'
 import Calc from './Calc.js'
 import Counter1 from './Counter1.js'
+import Welcome from './Welcome.js'
 
 
 const navs = [
@@ -14,7 +15,8 @@ const navs = [
     <Thing />,
     <Bob />,
     <Calc />,
-    <Counter1 />
+    <Counter1 />,
+    <Welcome />
   ];
   
   const navNames=[
@@ -22,7 +24,8 @@ const navs = [
     'Thing',
     'Bob',
     'Calculator',
-    'CounterBot'
+    'CounterBot',
+    'Welcome'
   ]
   
 
@@ -45,11 +48,10 @@ class Menu extends Component{
         let menu;
         if(this.state.menuActive) {
           menu = 
-          <BrowserRouter>
           <div>
                 <ul>
                   <li>
-                    <Link to='/'>Jank Town</Link>
+                    <Link to='/jank'>Jank Town</Link>
                     </li>
                     <li>
                     <Link to='/bob'>Bob Stone</Link>
@@ -64,24 +66,32 @@ class Menu extends Component{
                     <Link to='/counter'>Counter Maker</Link>
                     </li>
                     </ul>
-              <Route exact path='/' component={Jank} />
-              <Route path='/bob' component={Bob} />
-              <Route path='/thing' component={Thing} />
-              <Route path='/calc' component={Calc} />
-              <Route path='/counter' component={Counter1} />
-            </div>
-            </BrowserRouter>
+                </div>
+                  
             
         } else {
           menu = "";
+          
         }
         return (
+            <BrowserRouter>
+            <div>
           <div id = "menu">
-            <button onClick = { this.toggleMenu }>X</button>
-          <CSSTransitionGroup transitionName = "menu" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
+            <button className='menuButton' onClick = { this.toggleMenu }>DropDown</button>
+          <CSSTransitionGroup transitionName = "menu" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
             {menu}
           </CSSTransitionGroup>
-        </div>
+            <Route path='/jank' component={Jank} />
+            <Route path='/bob' component={Bob} />
+            <Route path='/thing' component={Thing} />
+            <Route path='/calc' component={Calc} />
+            <Route path='/counter' component={Counter1} />
+            <Route exact path='/' component={Welcome} /> 
+            </div>
+             
+            </div>
+            
+        </BrowserRouter>
         )
       }
     }
