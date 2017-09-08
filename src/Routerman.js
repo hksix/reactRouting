@@ -1,40 +1,73 @@
-import React, { Component } from 'react';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
-import Jank from './Jank.js'
-import Thing from './Thing.js'
-import Bob from './Bob.js'
-import Calc from './Calc.js'
-import Counter1 from './Counter1.js'
-import Menu from './Menu.js'
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
+// Each logical "route" has two components, one for
+// the sidebar and one for the main area. We want to
+// render both of them in different places when the
+// path matches the current URL.
+const routes = [
+  { path: '/',
+    exact: true,
+    sidebar: () => <div>home!</div>,
+    main: () => <h2>Home</h2>
+  },
+  { path: '/bubblegum',
+    sidebar: () => <div>bubblegum!</div>,
+    main: () => <h2>Bubblegum</h2>
+  },
+  { path: '/shoelaces',
+    sidebar: () => <div>shoelaces!</div>,
+    main: () => <h2>Shoelaces</h2>
+  }
+]
 
-const Routerman = ({
-    
-})=>{
-    <BrowserRouter>
-    <div>
-          <ul>
-            <li>
-              <Link to='/'>Jank Town</Link>
-              </li>
-              <li>
-              <Link to='/bob'>Bob Stone</Link>
-              </li>
-              <li>
-              <Link to='/thing'>The Thing</Link>
-              </li>
-              <li>
-              <Link to='/calc'>Calculator</Link>
-              </li>
-              <li>
-              <Link to='/counter'>Counter Maker</Link>
-              </li>
-              </ul>
-        <Route exact path='/' component={Jank} />
-        <Route path='/bob' component={Bob} />
-        <Route path='/thing' component={Thing} />
-        <Route path='/calc' component={Calc} />
-        <Route path='/counter' component={Counter1} />
+const SidebarExample = () => (
+  <Router>
+    <div style={{ display: 'flex' }}>
+      <div style={{
+        padding: '10px',
+        width: '40%',
+        background: '#f0f0f0'
+      }}>
+        <ul style={{ listStyleType: 'none', padding: 0 }}>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/bubblegum">Bubblegum</Link></li>
+          <li><Link to="/shoelaces">Shoelaces</Link></li>
+        </ul>
+
+        {routes.map((route, index) => (
+          // You can render a <Route> in as many places
+          // as you want in your app. It will render along
+          // with any other <Route>s that also match the URL.
+          // So, a sidebar or breadcrumbs or anything else
+          // that requires you to render multiple things
+          // in multiple places at the same URL is nothing
+          // more than multiple <Route>s.
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            component={route.sidebar}
+          />
+        ))}
       </div>
-      </BrowserRouter>
-}
+
+      <div style={{ flex: 1, padding: '10px' }}>
+        {routes.map((route, index) => (
+          // Render more <Route>s with the same paths as
+          // above, but different components this time.
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            component={route.main}
+          />
+        ))}
+      </div>
+    </div>
+  </Router>
+)
