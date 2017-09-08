@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Jank = (props) =>(
-    <h1>JankyJankJankerson</h1>
+    <p>JankyJankJankerson</p>
 );
 
 export default Jank;

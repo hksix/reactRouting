@@ -23,9 +23,10 @@
   text-align: start;
 }
 .menuButton{
-  /* position: absolute; */
+  position: relative;
   /* clear:left; */
   float: left;
+  /* margin: -19px 0 0 0; */
   background-color: #4CAF50;
   color: white;
   padding: 16px;
@@ -39,19 +40,16 @@
   background-color: #3e8e41;
 }
 .menu-enter {
-  position: relative;
-  /* display: inline-block; */
-  /* clear:left; */
-  opacity: 0.1;
+  /* opacity: 0.1; */
   /* max-height: 280px; */
-  /* animation-name: fade-out;
-  animation-duration: 500ms; */
-  
+  animation-name: fade-in;
+  animation-duration: 500ms;
 }
 
 .menu-enter.menu-enter-active {
+  /* position: absolute; */
   clear:left;
-  opacity: 1;
+  /* opacity: 1; */
   overflow: scroll;
   animation-name: fade-in;
   animation-duration: 500ms;
@@ -67,7 +65,7 @@
 .menu-leave.menu-leave-active {
   clear:left;
   animation-name: fade-out;
-  animation-duration: 1s;
+  animation-duration: 500ms;
 }
 
 ul {
@@ -112,14 +110,14 @@ li:hover {background-color: #f1f1f1
   }
   to {
     opacity: 1.0;
-    height: 280px;
+    height: 480px;
   }
 }
 
 @keyframes fade-out {
   from {
     opacity: 1.0;
-    height: 380px;
+    height: 480px;
   }
   to {
     opacity: 0.0;
